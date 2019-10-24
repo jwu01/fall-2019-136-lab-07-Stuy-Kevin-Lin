@@ -42,3 +42,9 @@ std::string formatCode(std::string filename) {
     }
     return output;
 }
+
+std::string readFile(std::string filename) {
+    std::ifstream fin(filename);
+    std::string output((std::istreambuf_iterator<char>(fin)), std::istreambuf_iterator<char>());
+    return output;
+}

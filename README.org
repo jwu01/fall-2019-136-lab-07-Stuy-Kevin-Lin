@@ -1,11 +1,11 @@
 * Fall 2019 - Lab 06
 
-* Last name:
+* Last name: Lin
 
-* First name:
+* First name: Kevin
 
 
-* GitHub username:
+* GitHub username: Stuy-Kevin-Lin
 
 * Notes:
 

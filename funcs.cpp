@@ -15,9 +15,17 @@ std::string removeLeadingSpaces(std::string line) {
 
 int countChar(std::string line, char c) {
     int output = 0;
+    bool insideQ = false;
     for (int i = 0; i < line.length(); i++) {
-        if (line[i] == c) {
+        if (line[i] == c && !insideQ) {
             output++;
+        }
+
+        if(line[i] == '"' &&!insideQ){
+           bool insideQ = true;
+        }
+        if(line[i] == '"' && insideQ){
+           bool insideQ = false;
         }
     }
     return output;
@@ -31,11 +39,14 @@ std::string formatCode(std::string filename) {
     while (std::getline(fin, currLine)) {
         int startsWithClosing = 0;
         currLine = removeLeadingSpaces(currLine);
-        if (currLine.substr(0,1) == "}") {
-            startsWithClosing = 1;
-        }
-        for (int i = 0; i < currIndent - startsWithClosing; i++) {
-            output += "\t";
+        if(currLine.substr(0,2) != "//"){
+           if (currLine.substr(0,1) == "}") {
+               startsWithClosing = 1;
+           }
+
+           for (int i = 0; i < currIndent - startsWithClosing; i++) {
+               output += "\t";
+           }
         }
         currIndent += countChar(currLine, '{') - countChar(currLine, '}');
         output += currLine + "\n";

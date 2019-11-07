@@ -21,11 +21,8 @@ int countChar(std::string line, char c) {
             output++;
         }
 
-        if(line[i] == '"' &&!insideQ){
-           bool insideQ = true;
-        }
-        if(line[i] == '"' && insideQ){
-           bool insideQ = false;
+        if(line[i] == '"'){
+           insideQ = !insideQ;
         }
     }
     return output;
